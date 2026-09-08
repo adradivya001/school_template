@@ -104,7 +104,7 @@ function ExactLogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={processedUrl || src}
       alt={alt}
-      className="w-14 h-14 sm:w-16 sm:h-16 object-contain filter drop-shadow-lg mix-blend-screen"
+      className="w-10 h-10 sm:w-11 sm:h-11 object-contain filter drop-shadow-lg mix-blend-screen"
     />
   );
 }
@@ -141,23 +141,23 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[88px] flex items-center font-sans",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[72px] flex items-center font-sans",
           isScrolled
             ? "bg-slate-950/85 backdrop-blur-xl border-b border-white/15 shadow-xl shadow-black/30"
             : "bg-slate-950/40 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/10"
         )}
       >
-        <div className="w-full px-3 sm:px-5 md:px-6 lg:px-8 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
             <div className="relative shrink-0 flex items-center justify-center">
               <ExactLogoImage src={logoSrc} alt={schoolData.schoolName} />
             </div>
 
             <div className="flex flex-col leading-none">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white font-sans group-hover:text-emerald-400 transition-colors">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white font-sans group-hover:text-emerald-400 transition-colors">
                 Green Valley
               </span>
-              <span className="text-xs sm:text-sm font-semibold text-slate-300/90 tracking-wide mt-1 font-sans">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-300/90 tracking-wide mt-0.5 font-sans">
                 International School
               </span>
             </div>
@@ -271,7 +271,7 @@ export function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden absolute top-[88px] left-0 right-0 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-y-auto max-h-[calc(100vh-88px)]"
+              className="lg:hidden absolute top-[72px] left-0 right-0 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-y-auto max-h-[calc(100vh-72px)]"
             >
               <div className="px-6 py-6 flex flex-col gap-4">
                 <nav className="flex flex-col gap-2">
