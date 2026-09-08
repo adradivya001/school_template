@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { TemplateData, SchoolConfig, ThemeConfig, SectionConfig, NavigationItem, PageConfig, AnimationConfig } from "@/types";
 import { defaultTemplateData } from "@/config/defaultData";
 
@@ -13,12 +13,41 @@ interface TemplateContextType {
   reorderSections: (pageId: string, newOrderIds: string[]) => void;
   updateNavigation: (id: string, updates: Partial<NavigationItem>) => void;
   updatePage: (id: string, updates: Partial<PageConfig>) => void;
+  resetData: () => void;
 }
 
 const TemplateContext = createContext<TemplateContextType | undefined>(undefined);
+const STORAGE_KEY = "school_template_data_v1";
 
 export function TemplateProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<TemplateData>(defaultTemplateData);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load saved configuration from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setData(parsed);
+      }
+    } catch (e) {
+      console.warn("Failed to load template data from localStorage", e);
+    } finally {
+      setIsLoaded(true);
+    }
+  }, []);
+
+  // Save changes to localStorage whenever data changes
+  useEffect(() => {
+    if (isLoaded) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn("Failed to save template data to localStorage", e);
+      }
+    }
+  }, [data, isLoaded]);
 
   const updateSchool = (schoolUpdates: Partial<SchoolConfig>) => {
     setData((prev) => ({
@@ -50,15 +79,14 @@ export function TemplateProvider({ children }: { children: ReactNode }) {
 
   const reorderSections = (pageId: string, newOrderIds: string[]) => {
     setData((prev) => {
-      const pageSections = [...prev.sections.filter(s => s.pageId === pageId)];
-      const otherSections = prev.sections.filter(s => s.pageId !== pageId);
-      
-      // Update order based on newOrderIds index
-      const updatedPageSections = pageSections.map(section => {
+      const pageSections = [...prev.sections.filter((s) => s.pageId === pageId)];
+      const otherSections = prev.sections.filter((s) => s.pageId !== pageId);
+
+      const updatedPageSections = pageSections.map((section) => {
         const order = newOrderIds.indexOf(section.id) + 1;
         return { ...section, order };
       });
-      
+
       return {
         ...prev,
         sections: [...otherSections, ...updatedPageSections],
@@ -80,6 +108,15 @@ export function TemplateProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const resetData = () => {
+    setData(defaultTemplateData);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {
+      // ignore
+    }
+  };
+
   return (
     <TemplateContext.Provider
       value={{
@@ -91,6 +128,7 @@ export function TemplateProvider({ children }: { children: ReactNode }) {
         reorderSections,
         updateNavigation,
         updatePage,
+        resetData,
       }}
     >
       {children}
