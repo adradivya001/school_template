@@ -73,7 +73,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-950 pt-[146px] pb-6 md:pb-8 font-sans">
+    <section className="relative min-h-[85vh] sm:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-950 pt-[115px] pb-6 md:pb-8 font-sans">
       {/* Background Image / Video with Subtle 1.035 Zoom Effect over 15 seconds */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
@@ -112,27 +112,27 @@ export function Hero() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full px-8 sm:px-14 md:px-20 lg:px-24 xl:px-28 flex-1 flex flex-col justify-between">
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 flex-1 flex flex-col justify-between">
         {/* Upper-left Content Block with Precise Vertical Spacing */}
-        <div className="my-auto max-w-[680px] flex flex-col items-start pt-2 pb-6">
-          {/* Admissions Badge (Navbar to badge: ~60px, badge to heading: ~18px) */}
+        <div className="my-auto max-w-[720px] flex flex-col items-start pt-2 pb-6">
+          {/* Admissions Badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white text-xs font-semibold uppercase tracking-wider mb-[18px] shadow-lg"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white text-xs font-semibold uppercase tracking-wider mb-4 shadow-lg"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>{heroConfig.badgeText}</span>
           </motion.div>
 
-          {/* Headline - Exactly 2 lines on desktop, Plus Jakarta Sans 72-80px font size, 700/800 weight, 0.98 line height */}
+          {/* Headline */}
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[80px] font-extrabold text-white font-sans tracking-tight leading-[0.98] drop-shadow-xl"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold text-white font-sans tracking-tight leading-[1.04] drop-shadow-xl"
             >
               {heroConfig.titleLine1}
             </motion.h1>
@@ -140,7 +140,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[80px] font-extrabold text-white font-sans tracking-tight leading-[0.98] drop-shadow-xl"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold text-white font-sans tracking-tight leading-[1.04] drop-shadow-xl"
             >
               {renderHighlightedTitle()}
             </motion.h1>
