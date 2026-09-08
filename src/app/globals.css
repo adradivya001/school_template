@@ -51,6 +51,7 @@
     @apply bg-background text-foreground;
   }
   html {
+    font-size: 14.5px;
     font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 }

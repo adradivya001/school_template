@@ -132,7 +132,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold text-white font-sans tracking-tight leading-[1.04] drop-shadow-xl"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[54px] font-extrabold text-white font-sans tracking-tight leading-[1.05] drop-shadow-xl"
             >
               {heroConfig.titleLine1}
             </motion.h1>
@@ -140,34 +140,34 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold text-white font-sans tracking-tight leading-[1.04] drop-shadow-xl"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[54px] font-extrabold text-white font-sans tracking-tight leading-[1.05] drop-shadow-xl"
             >
               {renderHighlightedTitle()}
             </motion.h1>
           </div>
 
-          {/* Description - Heading to description: ~20px, max 2 lines */}
+          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-[20px] text-base sm:text-[17px] text-slate-300 font-normal max-w-[620px] leading-relaxed drop-shadow"
+            className="mt-4 text-xs sm:text-sm text-slate-300 font-normal max-w-[580px] leading-relaxed drop-shadow"
           >
             {heroConfig.description}
           </motion.p>
 
-          {/* CTA Buttons - Description to buttons: ~26px */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-[26px] flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto"
+            className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto"
           >
             {/* Primary CTA */}
             <Link href={heroConfig.primaryCtaLink} className="w-full sm:w-auto">
               <AnimatedButton
                 size="lg"
-                className="w-full sm:w-auto h-12 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-base px-6 rounded-full shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 group border-none"
+                className="w-full sm:w-auto h-10 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm px-5 rounded-full shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 group border-none"
               >
                 <span>{heroConfig.primaryCtaLabel}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -179,26 +179,26 @@ export function Hero() {
               <AnimatedButton
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto h-12 bg-white/10 hover:bg-white/20 text-white border-white/25 font-bold text-base px-6 backdrop-blur-md rounded-full transition-all flex items-center justify-center"
+                className="w-full sm:w-auto h-10 bg-white/10 hover:bg-white/20 text-white border-white/25 font-bold text-sm px-5 backdrop-blur-md rounded-full transition-all flex items-center justify-center"
               >
                 <span>{heroConfig.secondaryCtaLabel}</span>
               </AnimatedButton>
             </Link>
           </motion.div>
 
-          {/* Watch Campus Tour Action - Buttons to tour: ~14px */}
+          {/* Watch Campus Tour Action */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-[14px]"
+            className="mt-3"
           >
             <button
               onClick={() => setIsTourModalOpen(true)}
-              className="text-slate-300 hover:text-white font-semibold text-sm flex items-center gap-2 transition-all group"
+              className="text-slate-300 hover:text-white font-semibold text-xs flex items-center gap-2 transition-all group"
             >
-              <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Play className="w-3 h-3 fill-current ml-0.5" />
+              <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
               </div>
               <span className="group-hover:underline">
                 {heroConfig.watchTourLabel}
@@ -207,23 +207,23 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Translucent Glass Statistics Bar (36-42px stat values, count-up animation) */}
+        {/* Translucent Glass Statistics Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="w-full pt-2"
         >
-          <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-6 shadow-xl grid grid-cols-2 md:grid-cols-4 gap-6 divide-y-0 divide-x-0 md:divide-x divide-white/10">
+          <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 p-4 sm:p-5 shadow-xl grid grid-cols-2 md:grid-cols-4 gap-4 divide-y-0 divide-x-0 md:divide-x divide-white/10">
             {heroConfig.statistics.map((stat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center md:items-start justify-center px-2 sm:px-6 py-1 md:py-0 first:pl-2"
+                className="flex flex-col items-center md:items-start justify-center px-2 sm:px-5 py-1 md:py-0 first:pl-2"
               >
-                <div className="text-3xl lg:text-[40px] font-extrabold text-white tracking-tight leading-none mb-1 font-sans">
+                <div className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight leading-none mb-1 font-sans">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-xs lg:text-[13px] text-slate-300 font-medium text-center md:text-left">
+                <div className="text-[11px] lg:text-xs text-slate-300 font-medium text-center md:text-left">
                   {stat.label}
                 </div>
               </div>
